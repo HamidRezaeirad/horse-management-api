@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "5b38f6bd-5364-4981-95ab-14551ba2fa22",
+		"name": "Horses Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3509814"
+	},
+	"item": [
+		{
+			"name": "Hourses",
+			"item": [
+				{
+					"name": "Get all horses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/horses?age=6",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"horses"
+							],
+							"query": [
+								{
+									"key": "age",
+									"value": "6"
+								},
+								{
+									"key": "breed",
+									"value": "persian",
+									"disabled": true
+								},
+								{
+									"key": "healthStatus",
+									"value": "healthy",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get horse by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/horses/{{horseId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"horses",
+								"{{horseId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new horse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseBody = pm.response.json();  // Parse the response JSON",
+									"pm.environment.set(\"horseId\", responseBody.id);  // Store `id` in the environment variable"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Spirit\",\n    \"age\": 7,\n    \"breed\": \"persian\",\n    \"healthStatus\": \"healthy\",\n    \"owner\": \"{{ownerId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/horses",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"horses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "vet",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"healthStatus\": \"healthy\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/horses/{{horseId}}/health",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"horses",
+								"{{horseId}}",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update horses",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Spirit77\",\n    \"age\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/horses/{{horseId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"horses",
+								"{{horseId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete horse",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/horses/{{horseId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"horses",
+								"{{horseId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "owners",
+			"item": [
+				{
+					"name": "Get all owners",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/owners",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"owners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get owner by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/owners/{{ownerId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"owners",
+								"{{ownerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseBody = pm.response.json();  // Parse the response JSON",
+									"pm.environment.set(\"ownerId\", responseBody.id);  // Store `id` in the environment variable"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe4 \",\n    \"email\": \"john@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/owners",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"owners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Owner",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@example123.com\",\n    \"name\": \"John Doe123 \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/owners/{{ownerId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"owners",
+								"{{ownerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete owner",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-user-role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/owners/{{ownerId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"owners",
+								"{{ownerId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
