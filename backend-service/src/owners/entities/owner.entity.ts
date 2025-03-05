@@ -16,7 +16,9 @@ export class OwnerEntity extends BaseEntity {
   @Column()
   email: string;
 
-  @OneToMany(() => HorseEntity, (horse) => horse.owner)
+  @OneToMany(() => HorseEntity, (horse) => horse.owner, {
+    cascade: true,
+  })
   @ApiProperty({
     example: 'Owner phone',
     description: 'The phone of the owner',

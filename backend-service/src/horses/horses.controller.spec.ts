@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DeleteResult } from 'typeorm';
 import { HealthStatus } from '../common/enums/healthStatus.enum';
 import { HorsesController } from './horses.controller';
 import { HorsesService } from './horses.service';
@@ -120,11 +119,9 @@ describe('HorsesController', () => {
 
   describe('deleteHorse', () => {
     it('should delete a horse by ID', async () => {
-      const result: DeleteResult = { raw: [], affected: 1 };
+      jest.spyOn(service, 'deleteHorse').mockResolvedValue(undefined);
 
-      jest.spyOn(service, 'deleteHorse').mockResolvedValue(result);
-
-      expect(await controller.deleteHorse('1')).toBe(result);
+      expect(await controller.deleteHorse('1')).toBe(undefined);
     });
   });
 

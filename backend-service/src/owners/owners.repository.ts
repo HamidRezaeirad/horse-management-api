@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { OwnerEntity } from './entities/owner.entity';
 import { CreateOwnerDto } from './models/create-owner-dto';
 import { UpdateOwnerDto } from './models/update-owner-dto';
@@ -45,8 +45,16 @@ export class OwnersRepository extends Repository<OwnerEntity> {
     return await this.save(owner);
   }
 
-  async deleteOwner(id: string): Promise<DeleteResult> {
-    await this.findById(id);
-    return await this.delete(id);
+  async deleteOwner(id: string): Promise<void> {
+    const owner = await this.findOne({
+      where: { id },
+      relations: ['horses'],
+    });
+
+    if (!owner) {
+      throw new NotFoundException(`Owner by ID ${id} not found`);
+    }
+
+    await this.repository.remove(owner);
   }
 }

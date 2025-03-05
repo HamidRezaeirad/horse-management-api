@@ -12,7 +12,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { DeleteResult } from 'typeorm';
 import { Roles } from '../common/decorators/roles.decorator';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { HorsesService } from './horses.service';
@@ -122,13 +121,13 @@ export class HorsesController {
    * @delete
    * @roles admin
    * @HttpCode 204
-   * @ApiResponse { status: 204, type: DeleteResult }
+   * @ApiResponse { status: 204, type: null }
    */
   @Delete(':id')
-  @ApiResponse({ status: 204, type: DeleteResult })
+  @ApiResponse({ status: 204, type: null })
   @Roles('admin')
   @HttpCode(204)
-  async deleteHorse(@Param('id') id: string): Promise<DeleteResult> {
+  async deleteHorse(@Param('id') id: string): Promise<void> {
     return this.horsesService.deleteHorse(id);
   }
 

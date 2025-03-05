@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DeleteResult } from 'typeorm';
 import { CreateOwnerDto } from './models/create-owner-dto';
 import { OwnerDto } from './models/owner-dto';
 import { UpdateOwnerDto } from './models/update-owner-dto';
@@ -102,11 +101,9 @@ describe('OwnersController', () => {
 
   describe('deleteOwner', () => {
     it('should delete an owner by ID', async () => {
-      const deleteResult: DeleteResult = { raw: [], affected: 1 };
+      jest.spyOn(service, 'deleteOwner').mockResolvedValue(undefined);
 
-      jest.spyOn(service, 'deleteOwner').mockResolvedValue(deleteResult);
-
-      expect(await controller.deleteOwner('1')).toBe(deleteResult);
+      expect(await controller.deleteOwner('1')).toBe(undefined);
       expect(service.deleteOwner).toHaveBeenCalledWith('1');
     });
   });
