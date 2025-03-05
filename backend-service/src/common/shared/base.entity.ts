@@ -26,7 +26,7 @@ export abstract class BaseEntity {
 
   @ApiProperty({
     example: '2024-02-12T10:00:00.000Z',
-    description: 'The date and time when the company was created',
+    description: 'The date and time when the entity was created',
   })
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   @Exclude()
@@ -34,7 +34,7 @@ export abstract class BaseEntity {
 
   @ApiProperty({
     example: '2024-02-12T12:00:00.000Z',
-    description: 'The date and time when the company was last updated',
+    description: 'The date and time when the entity was last updated',
   })
   @UpdateDateColumn({
     type: 'timestamp',

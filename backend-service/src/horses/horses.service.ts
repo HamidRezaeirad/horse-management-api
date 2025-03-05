@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { DeleteResult } from 'typeorm';
 import { OwnersService } from '../owners/owners.service';
 import { HorsesRepository } from './horses.repository';
 import { ChangeStatusDto } from './models/change-status-dto';
@@ -38,7 +37,7 @@ export class HorsesService {
     return this.horsesRepository.updateHorse(id, updateHorseDto);
   }
 
-  async deleteHorse(id: string): Promise<DeleteResult> {
+  async deleteHorse(id: string): Promise<void> {
     return this.horsesRepository.deleteHorse(id);
   }
 

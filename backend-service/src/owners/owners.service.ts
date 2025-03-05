@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { DeleteResult } from 'typeorm';
 import { CreateOwnerDto } from './models/create-owner-dto';
 import { OwnerDto } from './models/owner-dto';
 import { UpdateOwnerDto } from './models/update-owner-dto';
@@ -29,7 +28,7 @@ export class OwnersService {
     return this.ownersRepository.updateOwner(id, updateOwnerDto);
   }
 
-  deleteOwner(id: string): Promise<DeleteResult> {
+  deleteOwner(id: string): Promise<void> {
     return this.ownersRepository.deleteOwner(id);
   }
 }

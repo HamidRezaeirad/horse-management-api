@@ -29,6 +29,8 @@ export class HorseEntity extends BaseEntity {
   @Column({ type: 'enum', enum: HealthStatus, default: HealthStatus.Healthy })
   healthStatus: HealthStatus;
 
-  @ManyToOne(() => OwnerEntity, (owner) => owner.horses)
+  @ManyToOne(() => OwnerEntity, (owner) => owner.horses, {
+    onDelete: 'CASCADE',
+  })
   owner: OwnerEntity;
 }

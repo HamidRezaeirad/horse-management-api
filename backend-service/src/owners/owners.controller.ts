@@ -10,7 +10,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { DeleteResult } from 'typeorm';
 import { Roles } from '../common/decorators/roles.decorator';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { CreateOwnerDto } from './models/create-owner-dto';
@@ -107,15 +106,15 @@ export class OwnersController {
    * @returns The result of the delete operation.
    *
    * @Delete
-   * @ApiResponse { status: 204, type: DeleteResult }
+   * @ApiResponse { status: 204, type: null }
    * @role admin
    * @httpcode 204
    */
   @Delete(':id')
-  @ApiResponse({ status: 204, type: DeleteResult })
+  @ApiResponse({ status: 204, type: null })
   @Roles('admin')
   @HttpCode(204)
-  async deleteOwner(@Param('id') id: string): Promise<DeleteResult> {
-    return await this.ownersService.deleteOwner(id);
+  async deleteOwner(@Param('id') id: string): Promise<void> {
+    await this.ownersService.deleteOwner(id);
   }
 }

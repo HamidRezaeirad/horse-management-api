@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { HorseEntity } from './entities/horse.entity';
 import { ChangeStatusDto } from './models/change-status-dto';
 import { CreateHorseDto } from './models/create-horse-dto';
@@ -73,9 +73,9 @@ export class HorsesRepository extends Repository<HorseEntity> {
     return this.save(horse);
   }
 
-  async deleteHorse(id: string): Promise<DeleteResult> {
+  async deleteHorse(id: string): Promise<void> {
     await this.findById(id);
-    return await this.delete(id);
+    await this.delete(id);
   }
 
   async updateHealth(

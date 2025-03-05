@@ -72,7 +72,7 @@
 - :white_large_square: Embed role information in each payload.
 - :white_large_square: Check roles in each endpoint individually.
 - :white_check_mark: Centralize role checks with middleware.
-- :white_large_square: Store roles in
+- :white_large_square: Store roles in environment variables.
 
 ### 3. In designing RBAC for a REST API, which approach is generally more scalable and maintainable?
 
