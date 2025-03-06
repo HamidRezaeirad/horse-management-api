@@ -21,7 +21,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base-url}}/horses?age=6",
+							"raw": "{{base-url}}/horses",
 							"host": [
 								"{{base-url}}"
 							],
@@ -31,11 +31,12 @@
 							"query": [
 								{
 									"key": "age",
-									"value": "6"
+									"value": "5",
+									"disabled": true
 								},
 								{
 									"key": "breed",
-									"value": "persian",
+									"value": "Arabian",
 									"disabled": true
 								},
 								{
@@ -101,7 +102,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Spirit\",\n    \"age\": 7,\n    \"breed\": \"persian\",\n    \"healthStatus\": \"healthy\",\n    \"owner\": \"{{ownerId}}\"\n}",
+							"raw": "{\n    \"name\": \"Spirit\",\n    \"age\": 5,\n    \"breed\": \"Arabian\",\n    \"healthStatus\": \"healthy\",\n    \"owner\": \"{{ownerId}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,7 +134,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"healthStatus\": \"healthy\"\n}\n\n",
+							"raw": "{\n    \"healthStatus\": \"injured\"\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -170,7 +171,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Spirit77\",\n    \"age\": 9\n}",
+							"raw": "{\n    \"name\": \"Spirit-update\",\n    \"age\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -292,7 +293,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"John Doe4 \",\n    \"email\": \"john@example.com\"\n}",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -324,7 +325,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"john@example123.com\",\n    \"name\": \"John Doe123 \"\n}",
+							"raw": "{\n    \"email\": \"john@example2.com\",\n    \"name\": \"John Doe 2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

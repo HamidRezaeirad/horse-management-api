@@ -102,6 +102,15 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Unit test
+
+<img src="./assets/unit-test.png" width="500">
+<br>
+
+## e2e test
+
+<img src="./assets/e2e-test.png" width="500">
+
 ## Swagger Documentation
 
 1. Start the development server:
@@ -109,6 +118,8 @@ $ npm run test:cov
    npm run start:dev
    ```
 2. Open your browser and navigate to `http://localhost:3000/api-docs` to view the Swagger documentation.
+
+<img src="./assets/swagger.png" width="500">
 
 ## Postman Docs
 
