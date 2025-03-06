@@ -49,6 +49,10 @@ PGADMIN_DEFAULT_PASSWORD=PG admin password
 
 <img src="./assets/db-1.png" width="500">
 
+## .env.test.local Config
+
+<img src="./assets/env-test.png" width="500">
+
 ## pgadmin Config
 
 <img src="./assets/db-2.png" width="500">
