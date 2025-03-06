@@ -16,7 +16,7 @@ describe('HorsesService', () => {
 
   beforeEach(async () => {
     horsesRepository = {
-      createHourse: jest.fn(),
+      createHorse: jest.fn(),
       getAll: jest.fn(),
       findById: jest.fn(),
       updateHorse: jest.fn(),
@@ -60,12 +60,12 @@ describe('HorsesService', () => {
     };
 
     (ownersService.isOwnerExistById as jest.Mock).mockResolvedValue(true);
-    (horsesRepository.createHourse as jest.Mock).mockResolvedValue(horseDto);
+    (horsesRepository.createHorse as jest.Mock).mockResolvedValue(horseDto);
 
-    const result = await service.createHourse(createHorseDto);
+    const result = await service.createHorse(createHorseDto);
     expect(result).toEqual(horseDto);
     expect(ownersService.isOwnerExistById).toHaveBeenCalledWith('owner1');
-    expect(horsesRepository.createHourse).toHaveBeenCalledWith(createHorseDto);
+    expect(horsesRepository.createHorse).toHaveBeenCalledWith(createHorseDto);
   });
 
   it('should get all horses', async () => {

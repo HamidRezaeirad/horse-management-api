@@ -49,10 +49,8 @@ export class HorsesController {
   @Post()
   @ApiResponse({ status: 201, type: HorseDto })
   @Roles('admin')
-  async createHourse(
-    @Body() createHorseDto: CreateHorseDto,
-  ): Promise<HorseDto> {
-    return this.horsesService.createHourse(createHorseDto);
+  async createHorse(@Body() createHorseDto: CreateHorseDto): Promise<HorseDto> {
+    return this.horsesService.createHorse(createHorseDto);
   }
 
   /**

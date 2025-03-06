@@ -19,7 +19,7 @@ describe('HorsesController', () => {
         {
           provide: HorsesService,
           useValue: {
-            createHourse: jest.fn(),
+            createHorse: jest.fn(),
             getAll: jest.fn(),
             getById: jest.fn(),
             updateHorse: jest.fn(),
@@ -38,7 +38,7 @@ describe('HorsesController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('createHourse', () => {
+  describe('createHorse', () => {
     it('should create a new horse', async () => {
       const createHorseDto: CreateHorseDto = {
         name: 'Test Horse',
@@ -55,9 +55,9 @@ describe('HorsesController', () => {
         healthStatus: HealthStatus.Healthy,
       };
 
-      jest.spyOn(service, 'createHourse').mockResolvedValue(result);
+      jest.spyOn(service, 'createHorse').mockResolvedValue(result);
 
-      expect(await controller.createHourse(createHorseDto)).toBe(result);
+      expect(await controller.createHorse(createHorseDto)).toBe(result);
     });
   });
 
